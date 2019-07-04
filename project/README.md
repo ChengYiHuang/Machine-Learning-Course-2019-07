@@ -135,4 +135,11 @@ model.summary()
 <img src = "https://github.com/ChengYiHuang/Machine-Learning-Course-2019-07/blob/master/fig/DNN01.PNG" width = "420px">
 <img src = "https://github.com/ChengYiHuang/Machine-Learning-Course-2019-07/blob/master/fig/DNN02.PNG" width = "420px">
 
+## 課堂回饋  
+
+1. 著重於特定主題 : 涵蓋範圍太廣，需集中於特定主題，尚能學的更精實。  
+
+2. 公布所需先備知識 : 天數太少，作業難度太高，沒有程式基礎者感到相當痛苦。  
+
+3. 課程時數加長 : 希望課程時數可以增加，才能涵蓋更多的範圍，學習到更多機器學習的精神。  
 
