@@ -1,8 +1,8 @@
 # Kaggle Dataset : Pokemon with Stats
 
-hyprlink :  https://www.kaggle.com/abcsds/pokemon  
+Dataset hyprlink :  https://www.kaggle.com/abcsds/pokemon  
 
-透過不同能力值的分析，預測屬性及神獸屬性。  
+透過不同能力值的分析，希望能藉此預測屬性及神獸屬性。  
 
 ## Introduction
 
@@ -11,8 +11,8 @@ hyprlink :  https://www.kaggle.com/abcsds/pokemon
 |column|type|content|
 |:--:|:--:|:--:|
 |Name|string|寶可夢名字|
-|Type1|string|第一屬性|
-|Type2|string|第二屬性|
+|Type 1|string|第一屬性|
+|Type 2|string|第二屬性|
 |Total|int|加總能力數值|
 |Defense|int|防禦|
 |Sp. Atk|int|特殊攻擊|
@@ -23,26 +23,26 @@ hyprlink :  https://www.kaggle.com/abcsds/pokemon
 
 程式內容：
 
-```
+```python
 data.head(5)
 ```
 ![data](https://github.com/ChengYiHuang/Machine-Learning-Course-2019-07/blob/master/fig/data.png)
 
-```
+```python
 data.hist(figsize = (20,20))
 ```
 
 ![Subplot](https://github.com/ChengYiHuang/Machine-Learning-Course-2019-07/blob/master/fig/subplot.png)
 
 ## 資料前處理  
-```
+```python
 dummy_type_1 = pd.get_dummies(data['Type 1'])
 ```
 ![dummy](https://github.com/ChengYiHuang/Machine-Learning-Course-2019-07/blob/master/fig/type.PNG)
 
 
 把欄位標準化
-```
+```python
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 columns_list = ['Total', 'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed']
@@ -61,7 +61,7 @@ poke_clean_standard.head()
 ## 預測 legendary 屬性  
 
 1. 最近鄰居法 : K 選擇從 1 到 15  
-```
+```python
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(x, y,random_state = 2,test_size=0.4,stratify=y)
 
@@ -84,7 +84,7 @@ for i in range(1,15):
 
 
 2. Random Forest 隨機森林  
-```
+```python
 from sklearn.ensemble import RandomForestClassifier
 
 clf = RandomForestClassifier(n_estimators = 5)
@@ -98,7 +98,7 @@ clf.score(X_test, y_predict)
 
 3. Logistic Regression 邏輯迴歸  
 
-```
+```python
 from sklearn.preprocessing import Imputer
 from sklearn.linear_model import LogisticRegression
 
@@ -115,7 +115,7 @@ lr.score(X_test, y_test)
 <hr/>  
 
 ## 預測 type 屬性  
-```
+```python
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation
 from tensorflow.keras.optimizers import SGD
@@ -137,9 +137,19 @@ model.summary()
 
 ## 課堂回饋  
 
-1. 著重於特定主題 : 涵蓋範圍太廣，需集中於特定主題，尚能學得更精實。  
+- `著重於特定主題` : 涵蓋範圍太廣，需集中於特定主題，尚能學得更精實。  
 
-2. 公布所需先備知識 : 天數太少，作業難度太高，沒有程式基礎者感到相當痛苦。  
+由於模組化課程時間不長，因此要在短時間內將所有機器學習內容講述過一次，對老師與學生們都是極大的負擔 (預設這門課聽講的學生對此領域尚未了解透徹)，
+縱然分類與分群之間的關係的確不宜分成兩門獨立課程，但在學習上，感覺也不太適合在短時間內全數傾囊相授
+(因為它們彼此之間還是屬於可能會在學習產生逆向干擾的情況)，但還是希望模組化課程能將主題們再細分些，或者是規畫較為初階的課程
+(ex: 資料視覺化課程、資料前處理)。
 
-3. 課程時數加長 : 希望課程時數可以增加，才能涵蓋更多的範圍，學習到更多機器學習的精神。  
+- `公布所需先備知識` : 天數太少，作業難度太高，沒有程式基礎者感到相當痛苦。  
 
+課程當中感受到最主要的問題還是作業實作日期過短，一般程式基礎的人對於此課程一開始感受到的作業壓力蠻大的，且在課程後期所教授的內容又屬更進階，
+因此對於沒有先備知識的人對於學習過程當中，會感受到極大的挫折。
+
+- `課程時數加長` : 希望課程時數可以增加，才能涵蓋更多的範圍，學習到更多機器學習的精神。 
+
+四天的課程能深刻體會機器學習的深 (數學模型) 與廣 (應用在多方面)，但因為課程還要顧及上機時間，因此對於內部細節講解過於匆促，
+假若未來能有類似的課程，希望課程時數也許能被拉長至兩個禮拜，學習的步調能被放緩，讓學習的內容更加充實。  
